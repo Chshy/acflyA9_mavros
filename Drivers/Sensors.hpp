@@ -49,8 +49,8 @@
 	/*位置传感器定义*/
 		#define Position_Sensors_Count 16
 		
-		extern const unsigned char default_vision_height_sensor_index;
-		extern const unsigned char default_vision_sensor_index;
+		extern const uint8_t default_vision_height_sensor_index;
+		extern const uint8_t default_vision_sensor_index;
 
 		extern const uint8_t default_ultrasonic_sensor_index;
 		extern const uint8_t default_optical_flow_index;
