@@ -943,7 +943,7 @@ static void Msg84_SET_POSITION_TARGET_LOCAL_NED ( uint8_t Port_index, const mavl
 static void Msg102_VISION_POSITION_ESTIMATE( uint8_t Port_index , const mavlink_message_t* msg )
 {//BY
     
-	  const mavlink_vision_position_estimate_t* msg_rd = (mavlink_vision_position_estimate_t*)msg->payload64;
+	const mavlink_vision_position_estimate_t* msg_rd = (mavlink_vision_position_estimate_t*)msg->payload64;
     Position_Sensor POSITION_sensor;
     vector3<double> position;
     //高度信息处理
@@ -967,8 +967,8 @@ static void Msg102_VISION_POSITION_ESTIMATE( uint8_t Port_index , const mavlink_
         PositionSensorUpdatePosition( default_vision_height_sensor_index , position , true  );
 
 		// /* 屏幕打印
-	//	sprintf(mystr,"Z =%5.3lf\r\n\r\n",position.z);
-	//	Write_Uart3((uint8_t *)mystr, strlen(mystr), 1, 1);
+		sprintf(mystr,"Z =%5.3lf\r\n",position.z);
+		Write_Uart3((uint8_t *)mystr, strlen(mystr), 1, 1);
 		// */
     }
     
@@ -998,10 +998,10 @@ static void Msg103_VISION_SPEED_ESTIMATE ( uint8_t Port_index, const mavlink_mes
 		PositionSensorUpdateVel( default_vision_sensor_index , vel , true );
 
 		// /* 屏幕打印
-		//sprintf(mystr,"Vx=%5.3lf\r\n\r\n",vel.x);
-		//Write_Uart3((uint8_t *)mystr, strlen(mystr), 1, 1);
-		//sprintf(mystr,"Vy=%5.3lf\r\n\r\n",vel.y);
-		//Write_Uart3((uint8_t *)mystr, strlen(mystr), 1, 1);
+		sprintf(mystr,"Vx=%5.3lf\r\n",vel.x);
+		Write_Uart3((uint8_t *)mystr, strlen(mystr), 1, 1);
+		sprintf(mystr,"Vy=%5.3lf\r\n",vel.y);
+		Write_Uart3((uint8_t *)mystr, strlen(mystr), 1, 1);
 		// */
     }
 }

@@ -267,16 +267,17 @@ static void Cmd22_MAV_CMD_NAV_TAKEOFF(uint8_t port_index, const mavlink_message_
 	if (Get_Guided_Mode_Enabled())
 	{
 		Position_Control_Enable();
-		if(Position_Control_Takeoff_HeightRelative(height))
-		{
-			sprintf(mystr_2,"Z =%5.3lf\r\n\r\n",height);
-		     Write_Uart3((uint8_t *)mystr_2, strlen(mystr_2), 1, 1);
-		}
-		else
-		{
-			sprintf(mystr_2,"takeoff_fail\r\n\r\n");
-		     Write_Uart3((uint8_t *)mystr_2, strlen(mystr_2), 1, 1);
-		}
+		Position_Control_Takeoff_HeightRelative(height);
+		// if(Position_Control_Takeoff_HeightRelative(height))
+		// {
+		// 	// sprintf(mystr_2,"Z =%5.3lf\r\n\r\n",height);
+		//     // Write_Uart3((uint8_t *)mystr_2, strlen(mystr_2), 1, 1);
+		// }
+		// else
+		// {
+		// 	// sprintf(mystr_2,"takeoff_fail\r\n\r\n");
+		//     // Write_Uart3((uint8_t *)mystr_2, strlen(mystr_2), 1, 1);
+		// }
 		if (port->write)
 		{
 			mavlink_message_t msg_sd;
