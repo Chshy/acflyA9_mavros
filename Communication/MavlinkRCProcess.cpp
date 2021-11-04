@@ -966,7 +966,7 @@ static void Msg102_VISION_POSITION_ESTIMATE( uint8_t Port_index , const mavlink_
         position.z = -100 * mavlink_msg_vision_position_estimate_get_z(msg);
         PositionSensorUpdatePosition( default_vision_height_sensor_index , position , true  );
 
-		// /* ÆÁÄ»´òÓ¡
+		/* ÆÁÄ»´òÓ¡
 		sprintf(mystr,"Z =%5.3lf\r\n",position.z);
 		Write_Uart3((uint8_t *)mystr, strlen(mystr), 1, 1);
 		// */
@@ -997,12 +997,14 @@ static void Msg103_VISION_SPEED_ESTIMATE ( uint8_t Port_index, const mavlink_mes
 		vel.y = -(msg_rd->y)*100.0;
 		PositionSensorUpdateVel( default_vision_sensor_index , vel , true );
 
-		// /* ÆÁÄ»´òÓ¡
+		/* ÆÁÄ»´òÓ¡
 		sprintf(mystr,"Vx=%5.3lf\r\n",vel.x);
 		Write_Uart3((uint8_t *)mystr, strlen(mystr), 1, 1);
 		sprintf(mystr,"Vy=%5.3lf\r\n",vel.y);
 		Write_Uart3((uint8_t *)mystr, strlen(mystr), 1, 1);
 		// */
+		sprintf(mystr,"speed:%lf,%lf\r\n",vel.x,vel.y);
+		Write_Uart3((uint8_t *)mystr, strlen(mystr), 1, 1);
     }
 }
 
