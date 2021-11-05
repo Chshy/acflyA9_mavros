@@ -49,16 +49,15 @@
 	/*位置传感器定义*/
 		#define Position_Sensors_Count 16
 		
-		extern const unsigned char default_vision_height_sensor_index;
-		extern const unsigned char default_vision_sensor_index;
-
-		extern const uint8_t default_ultrasonic_sensor_index;
-		extern const uint8_t default_optical_flow_index;
-		extern const uint8_t external_baro_sensor_index;
-		extern const uint8_t internal_baro_sensor_index;
-		extern const uint8_t default_gps_sensor_index;
-		extern const uint8_t default_rtk_sensor_index;
-		extern const uint8_t default_vision_sensor_index;
+		extern const uint8_t default_vision_height_sensor_index = 0;   //视觉高度
+		extern const uint8_t default_vision_speed_sensor_index = 1;    //视觉速度
+		extern const uint8_t default_vision_position_sensor_index = 2; //视觉位置
+		extern const uint8_t default_ultrasonic_sensor_index = 3;      //超声波
+		extern const uint8_t external_baro_sensor_index = 4;           //外部气压计
+		extern const uint8_t internal_baro_sensor_index = 5;           //内部气压计
+		extern const uint8_t default_rtk_sensor_index = 6;             //RTK
+		extern const uint8_t default_gps_sensor_index = 7;             //GPS
+		extern const uint8_t default_optical_flow_index = 8;           //光流
 		
 		enum Position_Sensor_Type
 		{
