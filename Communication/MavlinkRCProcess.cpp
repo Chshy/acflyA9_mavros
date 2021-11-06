@@ -989,11 +989,34 @@ static void Msg102_VISION_POSITION_ESTIMATE(uint8_t Port_index, const mavlink_me
 	//高度信息处理
 	if (GetPositionSensor(default_vision_height_sensor_index, &POSITION_sensor) == false)
 	{
-
 		PositionSensorRegister(default_vision_height_sensor_index,
 							   Position_Sensor_Type_RelativePositioning,
 							   Position_Sensor_DataType_s_z,
 							   Position_Sensor_frame_BodyHeading,
+							   0.05f,
+							   true);
+	}
+	else
+	{
+
+		position.x = 0;
+		position.y = 0;
+		position.z = -100 * mavlink_msg_vision_position_estimate_get_z(msg);
+		PositionSensorUpdatePosition(default_vision_height_sensor_index, position, true);
+
+		// /* 屏幕打印
+		//	sprintf(mystr,"Z =%5.3lf\r\n\r\n",position.z);
+		//	Write_Uart3((uint8_t *)mystr, strlen(mystr), 1, 1);
+		// */
+	}
+
+	//平面位置信息处理
+	if (GetPositionSensor(default_vision_position_sensor_index, &POSITION_sensor) == false)
+	{
+		PositionSensorRegister(default_vision_position_sensor_index,
+							   Position_Sensor_Type_RelativePositioning,
+							   Position_Sensor_DataType_s_xy,
+							   Position_Sensor_frame_ENU,
 							   0.05f,
 							   true);
 	}
